@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
       - name: Swagger Codegen
         # You may pin to the exact commit or the version.
@@ -38,16 +40,19 @@ jobs:
         with:
           always-auth: true
 
-      # - name: Install dependencies
-      #- uses: bahmutov/npm-install@v1
       - name: Install deps
         run: npm install
         
       - name: Remove out-of-date files and git
         run: |
           rm -rf node_modules/@types/node/assert.d.ts
-          rm -rf .git
+          #rm -rf .git
         
+      - name: Git config
+        run: |
+          git config --global user.name "LD Devops Automation"
+          git config --global user.email "support@livedatatechnologies.com"
+          
       - name: Version bump
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
