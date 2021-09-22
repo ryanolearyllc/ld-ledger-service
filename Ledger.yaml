@@ -85,6 +85,8 @@ paths:
                   type: boolean
                 updateEmail:
                   type: boolean
+              required:
+                - name
             examples:
               example-1:
                 value:
