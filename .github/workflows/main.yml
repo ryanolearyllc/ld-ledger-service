@@ -67,4 +67,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           
+      - name: Push version tag
+        run: git push
+          
 
