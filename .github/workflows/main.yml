@@ -31,7 +31,7 @@ jobs:
         uses: ducksify/swagger-codegen-action@v3.0
         with:
           # Arguments
-          args: generate -l typescript-angular -i Ledger.yaml -c options-ledger.json
+          args: generate -l typescript-angular -i Ledger.yaml -c options-ledger.json -o ng-ledger-service
 
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -42,14 +42,17 @@ jobs:
       #- uses: bahmutov/npm-install@v1
       - name: Install deps
         run: npm install
+        working-directory: ng-ledger-service
         
       - name: Remove out-of-date files
         run: rm -rf node_modules/@types/node/assert.d.ts
+        working-directory: ng-ledger-service
         
       - name: Version bump
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           npm version --no-commit-hooks `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'` 
+        working-directory: ng-ledger-service
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
