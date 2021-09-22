@@ -47,7 +47,9 @@ jobs:
         run: rm -rf node_modules/@types/node/assert.d.ts
         
       - name: Version bump
-        run: npm version `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'`
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm version `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'`
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
