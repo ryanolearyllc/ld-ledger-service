@@ -31,13 +31,16 @@ jobs:
         uses: ducksify/swagger-codegen-action@v3.0
         with:
           # Arguments
-          args: generate -o ng-ledger-service -l typescript-angular -i Ledger.yaml
+          args: generate -o ng-ledger-service -l typescript-angular -i Ledger.yaml -c options-ledger.json
         
       # - name: Install dependencies
       - uses: bahmutov/npm-install@v1
         
       - name: Remove out-of-date files
         run: rm -rf node_modules/@types/node/assert.d.ts
+        
+      - name: Version bump
+        run: npm version `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'`
         
       - name: Build NPM
         run: npm run build
