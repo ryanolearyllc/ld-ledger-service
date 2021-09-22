@@ -31,7 +31,7 @@ jobs:
         uses: ducksify/swagger-codegen-action@v3.0
         with:
           # Arguments
-          args: -o ng-ledger-service -l typescript-angular -i Ledger.yaml
+          args: -l typescript-angular -i Ledger.yaml
           
       # Runs a single command using the runners shell
       - name: Run a one-line script
