@@ -12,6 +12,8 @@ servers:
     description: Production
   - url: 'https://staging.gotlivedata.io/api/ledger/v1'
     description: Staging
+  - url: 'https://alternate.gotlivedata.io/api/ledger/v1'
+    description: Alternate
 paths:
   '/orgs/{orgId}/ledgers':
     get:
