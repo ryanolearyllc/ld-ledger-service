@@ -49,7 +49,7 @@ jobs:
       - name: Version bump
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm version `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'` --commit-hooks false
+          npm version --commit-hooks false `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'` 
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
