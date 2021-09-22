@@ -34,7 +34,9 @@ jobs:
           args: generate -l typescript-angular -i Ledger.yaml -c options-ledger.json
         
       # - name: Install dependencies
-      - uses: bahmutov/npm-install@v1
+      #- uses: bahmutov/npm-install@v1
+      - name: Install deps
+        run: npm install
         
       - name: Remove out-of-date files
         run: rm -rf node_modules/@types/node/assert.d.ts
