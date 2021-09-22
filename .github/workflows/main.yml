@@ -32,13 +32,9 @@ jobs:
         with:
           # Arguments
           args: generate -l typescript-angular -i Ledger.yaml
-          
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
         
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      - uses: bahmutov/npm-install@v1
         
       - name: Remove out-of-date files
         run: rm -rf node_modules/@types/node/assert.d.ts
