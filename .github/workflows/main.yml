@@ -43,12 +43,14 @@ jobs:
         
       - name: Version bump
         run: npm version `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'`
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
-      - name: Build NPM
-        run: npm run build
+#       - name: Build NPM
+#         run: npm run build
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+#       - uses: JS-DevTools/npm-publish@v1
+#         with:
+#           token: ${{ secrets.NPM_TOKEN }}
           
 
