@@ -42,7 +42,7 @@ paths:
                         type: ledger#ledger
       operationId: get-ledgers
       description: |-
-        Gets list of ledgers for the account
+        Gets list of ledgers for the org
         Role(s) required: viewer, editor, admin
       tags:
         - Ledgers
