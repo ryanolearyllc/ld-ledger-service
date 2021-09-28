@@ -278,6 +278,10 @@ paths:
             type: string
           in: query
           name: endDate
+        - schema:
+            type: boolean
+          in: query
+          name: isVerified
       tags:
         - Ledger Contacts
     post:
