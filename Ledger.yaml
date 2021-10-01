@@ -517,16 +517,17 @@ paths:
     get:
       summary: Get import errors
       operationId: get-import-errors
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+                properties: {}
       description: Get the errors CSV from an import
       tags:
         - Contact Imports
-      requestBody:
-        content:
-          text/csv:
-            schema:
-              type: object
-              properties: {}
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/{contactId}':
     parameters:
       - schema:
