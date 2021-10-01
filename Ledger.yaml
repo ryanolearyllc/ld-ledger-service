@@ -495,6 +495,38 @@ paths:
         Role(s) required: viewer, editor, admin
       tags:
         - Contact Imports
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}/downloadErrors':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: importId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Get import errors
+      operationId: get-import-errors
+      responses: {}
+      description: Get the errors CSV from an import
+      tags:
+        - Contact Imports
+      requestBody:
+        content:
+          text/csv:
+            schema:
+              type: object
+              properties: {}
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/{contactId}':
     parameters:
       - schema:
