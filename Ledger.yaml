@@ -309,17 +309,22 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/ContactBody'
+              type: object
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ContactBody'
             examples:
               example-1:
                 value:
-                  - name: string
-                    company: string
-                    linkedin: string
-                    email: string
-                    phone: string
+                  contacts:
+                    - id: string
+                      name: string
+                      company: string
+                      linkedin: string
+                      email: string
+                      phone: string
         description: 'When POSTing contact data, the `name` and `company` fields are required for every contact in the array. The other fields are optional.'
       description: |-
         Asynchronously import contacts via json body. This API call is limited to adding only 25 contacts. For importing larger sets of contacts, use the contacts/imports endpoint. The response from this call is an ImportID which can be checked to determined the status of the import.
