@@ -282,6 +282,10 @@ paths:
             type: boolean
           in: query
           name: isVerified
+        - schema:
+            type: string
+          in: query
+          name: referenceId
       tags:
         - Ledger Contacts
     post:
@@ -387,8 +391,20 @@ paths:
         - schema:
             type: string
           in: query
-          name: last_updated
-          description: Filter on last time contact was updated
+          name: referenceId
+          description: Filter on reference Id
+        - schema:
+            type: string
+          in: query
+          name: fromDate
+        - schema:
+            type: string
+          in: query
+          name: endDate
+        - schema:
+            type: string
+          in: query
+          name: isVerified
       description: |-
         Returns CSV like /api/v1/dwh/sample/download
 
@@ -701,6 +717,8 @@ components:
           type: string
         importTitle:
           type: string
+        referenceId:
+          type: string
       required:
         - id
         - name
@@ -728,6 +746,8 @@ components:
         phone:
           type: string
         title:
+          type: string
+        referenceId:
           type: string
     Imports:
       title: imports
