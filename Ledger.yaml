@@ -474,7 +474,7 @@ paths:
           in: query
           name: fileName
         - schema:
-            type: integer
+            type: string
           in: query
           name: sortBy
         - schema:
