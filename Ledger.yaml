@@ -287,7 +287,7 @@ paths:
           in: query
           name: referenceId
       tags:
-        - Ledger Contacts
+        - Contacts
     post:
       summary: Add contacts to ledger
       operationId: add-ledger-contact
@@ -411,7 +411,7 @@ paths:
         Use querystring parameters to filter the results that are returned in the file. 
         Role(s) required: viewer, editor, admin
       tags:
-        - Ledger Contacts
+        - Contacts
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports':
     parameters:
       - schema:
@@ -469,6 +469,23 @@ paths:
               - complete
           in: query
           name: status
+        - schema:
+            type: string
+          in: query
+          name: fileName
+        - schema:
+            type: integer
+          in: query
+          name: sortBy
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - name: offset
+        - schema:
+            type: integer
+          in: query
+          name: offset
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}':
     parameters:
       - schema:
@@ -826,6 +843,7 @@ components:
       scheme: bearer
 tags:
   - name: Contact Imports
+  - name: Contacts
   - name: Ledger Contacts
   - name: Ledgers
 security:
