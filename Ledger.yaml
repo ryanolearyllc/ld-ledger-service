@@ -413,6 +413,14 @@ paths:
             type: string
           in: query
           name: isVerified
+        - schema:
+            type: string
+          in: query
+          name: importCompany
+        - schema:
+            type: string
+          in: query
+          name: importTitle
       description: |-
         Returns CSV like /api/v1/dwh/sample/download
 
