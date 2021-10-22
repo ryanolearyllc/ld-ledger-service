@@ -286,6 +286,14 @@ paths:
             type: string
           in: query
           name: referenceId
+        - schema:
+            type: string
+          in: query
+          name: importCompany
+        - schema:
+            type: string
+          in: query
+          name: importTitle
       tags:
         - Ledger Contacts
     post:
