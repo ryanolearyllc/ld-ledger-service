@@ -847,9 +847,7 @@ components:
           type: integer
         href:
           type: string
-        created_by:
-          type: string
-        created_at:
+        createdAt:
           type: string
         type:
           type: string
