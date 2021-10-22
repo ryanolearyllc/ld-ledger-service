@@ -486,6 +486,10 @@ paths:
             type: integer
           in: query
           name: offset
+        - schema:
+            type: string
+          in: query
+          name: importType
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}':
     parameters:
       - schema:
