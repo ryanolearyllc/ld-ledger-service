@@ -1,0 +1,1810 @@
+{
+    "info": {
+        "_postman_id": "c16ee6ba-fcb2-4f25-8d87-35b2a2eb6789",
+        "name": "Live Data Ledger API",
+        "description": "Create and manage Live Data ledgers, including adding contacts and getting updates to employment.\n\nContact Support:\n Name: LiveData Support\n Email: support@livedatatechnologies.com",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Contact Imports",
+            "item": [
+                {
+                    "name": "Get all file upload jobs",
+                    "id": "6f22150b-3a1c-4081-b833-3176f242ab21",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports?status=in_progress&fileName=reprehenderit e&sortBy=reprehenderit e&limit=27178667&offset=27178667&importType=reprehenderit e",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                "imports"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "in_progress"
+                                },
+                                {
+                                    "key": "fileName",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "sortBy",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "27178667"
+                                },
+                                {
+                                    "key": "offset",
+                                    "value": "27178667"
+                                },
+                                {
+                                    "key": "importType",
+                                    "value": "reprehenderit e"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "id": "aa8b9930-087b-4de0-bd35-24c75fdea5ac",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "4d2b425c-079d-41a3-8a1f-b0420df47b6f",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Get a list of all contact import jobs for this ledger\nRole(s) required: viewer, editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "78e1fb01-a3d0-415a-b3be-a0bb02b2bb58",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports?status=in_progress&fileName=reprehenderit e&sortBy=reprehenderit e&limit=27178667&offset=27178667&importType=reprehenderit e",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "imports"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "status",
+                                            "value": "in_progress"
+                                        },
+                                        {
+                                            "key": "fileName",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "sortBy",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "limit",
+                                            "value": "27178667"
+                                        },
+                                        {
+                                            "key": "offset",
+                                            "value": "27178667"
+                                        },
+                                        {
+                                            "key": "importType",
+                                            "value": "reprehenderit e"
+                                        }
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"imports\": [\n  {\n   \"guid\": \"string\",\n   \"fileName\": \"string\",\n   \"contactsNum\": 0,\n   \"importedBy\": \"string\",\n   \"status\": \"in_progress\",\n   \"iimportStartedAt\": \"string\",\n   \"importFinishedAt\": \"string\",\n   \"errorsCsvHref\": \"string\",\n   \"type\": \"ledger#import\"\n  }\n ]\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get file import info",
+                    "id": "1ba8a475-7c92-4b25-bfb0-cdcd64a8cc8c",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports/:importId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                "imports",
+                                ":importId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "5391d04e-96ac-4fad-aa5c-d7688b6267dc",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "dc330f15-c32b-4139-8a86-8f488d6dfdaa",
+                                    "key": "importId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "82682e87-9fad-4254-acac-c2e258c88b81",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Get the info for an import\nSame as GLD clean\nRole(s) required: viewer, editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "33fcb472-cc32-4639-a832-92c173b71e83",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports/:importId",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "imports",
+                                        ":importId"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "importId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"guid\": \"string\",\n \"fileName\": \"string\",\n \"contactsNum\": 0,\n \"importedBy\": \"string\",\n \"status\": \"in_progress\",\n \"iimportStartedAt\": \"string\",\n \"importFinishedAt\": \"string\",\n \"errorsCsvHref\": \"string\",\n \"type\": \"ledger#import\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get import errors",
+                    "id": "49f59d48-63de-41f0-873d-84541b2b016e",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports/:importId/downloadErrors",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                "imports",
+                                ":importId",
+                                "downloadErrors"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "8c6b306e-f515-413b-9e0c-a442b722cf19",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "2c46ea8c-d6d6-49f4-8c2b-fb15713c2ea4",
+                                    "key": "importId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "de6c3990-c874-465b-8a53-50d2b00e69e2",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Get the errors CSV from an import"
+                    },
+                    "response": [
+                        {
+                            "id": "4cbac12c-6337-49fa-820f-4398c4d920ca",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports/:importId/downloadErrors",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "imports",
+                                        ":importId",
+                                        "downloadErrors"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "importId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/csv"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Import contacts from Flatfile",
+                    "id": "7801b95a-630f-4f05-b361-527816371963",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fileName\": \"sit ut\",\n    \"contactsNum\": -22778339.893553406,\n    \"batchId\": \"exe\",\n    \"originalRows\": 48419143.5219948,\n    \"manual\": false\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports/flatfile",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                "imports",
+                                "flatfile"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "459103ff-fe23-4a5e-8d34-ea2ef5c60b6a",
+                                    "key": "orgId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "d61e90d0-5be4-4441-9c45-40ebd060fb05",
+                                    "key": "ledgerId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Create a new import job from a Flatfile import\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "b62a0e21-74b5-4812-9cea-c371069f25eb",
+                            "name": "Created",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"fileName\": \"sit ut\",\n    \"contactsNum\": -22778339.893553406,\n    \"batchId\": \"exe\",\n    \"originalRows\": 48419143.5219948,\n    \"manual\": false\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/imports/flatfile",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "imports",
+                                        "flatfile"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "orgId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"id\": \"tempor\",\n \"fileName\": \"proident dolore enim eu minim\",\n \"contactsNum\": 54380309,\n \"importedBy\": \"commodo\",\n \"status\": \"in_progress\",\n \"startedAt\": \"laborum in consectetur in\",\n \"finishedAt\": \"est elit\",\n \"errorsCsvHref\": \"ullamco laborum\",\n \"type\": \"ledger#import\"\n}"
+                        }
+                    ]
+                }
+            ],
+            "id": "be2c170f-7283-44bd-8fcb-020e62421f5b"
+        },
+        {
+            "name": "Contacts",
+            "item": [],
+            "id": "b49b9be1-a3de-4fba-a527-f86df546127f"
+        },
+        {
+            "name": "Ledger Contacts",
+            "item": [
+                {
+                    "name": "Get list of contacts from ledger",
+                    "id": "7c0da1d9-3d96-46a4-909f-6f9bf100b30e",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts?company=reprehenderit e&domain=reprehenderit e&title=reprehenderit e&name=reprehenderit e&sortBy=-name&limit=27178667&offset=27178667&fromDate=reprehenderit e&endDate=reprehenderit e&isVerified=false&referenceId=reprehenderit e&importCompany=reprehenderit e&importTitle=reprehenderit e",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts"
+                            ],
+                            "query": [
+                                {
+                                    "key": "company",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "domain",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "sortBy",
+                                    "value": "-name"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "27178667"
+                                },
+                                {
+                                    "key": "offset",
+                                    "value": "27178667"
+                                },
+                                {
+                                    "key": "fromDate",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "isVerified",
+                                    "value": "false"
+                                },
+                                {
+                                    "key": "referenceId",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "importCompany",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "importTitle",
+                                    "value": "reprehenderit e"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "id": "49b1c32b-19c8-407b-ae82-4f80b57a48ba",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "1aa4eda3-b7e5-4023-b54d-e2936c5b0cbe",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Gets a list of contacts for the ledger\nRole(s) required: viewer, editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "edbe987f-6477-4c21-b5f4-efd8609a0fec",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts?company=reprehenderit e&domain=reprehenderit e&title=reprehenderit e&name=reprehenderit e&sortBy=-name&limit=27178667&offset=27178667&fromDate=reprehenderit e&endDate=reprehenderit e&isVerified=false&referenceId=reprehenderit e&importCompany=reprehenderit e&importTitle=reprehenderit e",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "company",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "domain",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "title",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "name",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "sortBy",
+                                            "value": "-name"
+                                        },
+                                        {
+                                            "key": "limit",
+                                            "value": "27178667"
+                                        },
+                                        {
+                                            "key": "offset",
+                                            "value": "27178667"
+                                        },
+                                        {
+                                            "key": "fromDate",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "endDate",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "isVerified",
+                                            "value": "false"
+                                        },
+                                        {
+                                            "key": "referenceId",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "importCompany",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "importTitle",
+                                            "value": "reprehenderit e"
+                                        }
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"contacts\": [\n  {\n   \"id\": \"string\",\n   \"name\": \"string\",\n   \"company\": \"string\",\n   \"linkedin\": \"string\",\n   \"email\": \"string\",\n   \"phone\": \"string\",\n   \"title\": \"string\",\n   \"importedFrom\": {\n    \"id\": \"string\",\n    \"fileName\": \"string\",\n    \"importFinishedAt\": \"string\",\n    \"type\": \"ledger#import\"\n   },\n   \"createdAt\": \"string\",\n   \"changedAt\": \"string\",\n   \"type\": \"ledger#contact\"\n  }\n ]\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add contacts to ledger",
+                    "id": "42531013-dddb-4a4b-9d7b-eb3c85f393e8",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"contacts\": [\n        {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"company\": \"string\",\n            \"linkedin\": \"string\",\n            \"email\": \"string\",\n            \"phone\": \"string\"\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "9b71fd63-6ef7-48ec-8131-43e68401b8b5",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "b09e771b-9387-4322-bf9b-cf7f223a48f7",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Asynchronously import contacts via json body. This API call is limited to adding only 25 contacts. For importing larger sets of contacts, use the contacts/imports endpoint. The response from this call is an ImportID which can be checked to determined the status of the import.\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "e5275c77-e946-41eb-976d-6b057185a493",
+                            "name": "Created",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"contacts\": [\n        {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"company\": \"string\",\n            \"linkedin\": \"string\",\n            \"email\": \"string\",\n            \"phone\": \"string\"\n        }\n    ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"guid\": \"string\",\n \"fileName\": \"string\",\n \"contacts_num\": 0,\n \"imported_by\": \"string\",\n \"status\": \"in_progress\",\n \"import_started_at\": \"string\"\n}"
+                        },
+                        {
+                            "id": "41d3407d-1914-45c9-8787-920daca0ce5e",
+                            "name": "One or more contacts specified in the body does not contain the required fields, or contains invalid fields",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"contacts\": [\n        {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"company\": \"string\",\n            \"linkedin\": \"string\",\n            \"email\": \"string\",\n            \"phone\": \"string\"\n        }\n    ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                            "code": 422,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Download ledger contacts as file",
+                    "id": "247390f0-1cfe-49bd-8c4e-5629bc3d9553",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/download?company=reprehenderit e&title=reprehenderit e&domain=reprehenderit e&name=reprehenderit e&sortBy=-name&referenceId=reprehenderit e&fromDate=reprehenderit e&endDate=reprehenderit e&isVerified=reprehenderit e&importCompany=reprehenderit e&importTitle=reprehenderit e",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                "download"
+                            ],
+                            "query": [
+                                {
+                                    "key": "company",
+                                    "value": "reprehenderit e",
+                                    "description": "Filter on company field"
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "reprehenderit e",
+                                    "description": "Filter on title field"
+                                },
+                                {
+                                    "key": "domain",
+                                    "value": "reprehenderit e",
+                                    "description": "Filter on domain field"
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "reprehenderit e",
+                                    "description": "Filter on name field"
+                                },
+                                {
+                                    "key": "sortBy",
+                                    "value": "-name",
+                                    "description": "Sort the results by the specified field"
+                                },
+                                {
+                                    "key": "referenceId",
+                                    "value": "reprehenderit e",
+                                    "description": "Filter on reference Id"
+                                },
+                                {
+                                    "key": "fromDate",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "isVerified",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "importCompany",
+                                    "value": "reprehenderit e"
+                                },
+                                {
+                                    "key": "importTitle",
+                                    "value": "reprehenderit e"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "id": "1812a278-a6d5-4949-b9ba-d4a5e9b9ae6d",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "b7a5dc5f-bb03-4e35-9c84-980475371edc",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Returns CSV like /api/v1/dwh/sample/download\n\nUse querystring parameters to filter the results that are returned in the file. \nRole(s) required: viewer, editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "398a84c3-de38-45d7-813b-509cf47213fe",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/download?company=reprehenderit e&title=reprehenderit e&domain=reprehenderit e&name=reprehenderit e&sortBy=-name&referenceId=reprehenderit e&fromDate=reprehenderit e&endDate=reprehenderit e&isVerified=reprehenderit e&importCompany=reprehenderit e&importTitle=reprehenderit e",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "download"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "company",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "title",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "domain",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "name",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "sortBy",
+                                            "value": "-name"
+                                        },
+                                        {
+                                            "key": "referenceId",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "fromDate",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "endDate",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "isVerified",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "importCompany",
+                                            "value": "reprehenderit e"
+                                        },
+                                        {
+                                            "key": "importTitle",
+                                            "value": "reprehenderit e"
+                                        }
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/csv"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove contact from ledger",
+                    "id": "0bf7e1ca-faf0-4f7a-b5a1-e9fc5ed50c8c",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/:contactId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                ":contactId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "cc69b88d-0838-4f29-904a-6b60d5e3895d",
+                                    "key": "ledgerId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "a7a7a066-ded7-4bef-9b55-b9afd05f07a1",
+                                    "key": "contactId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "767c3bec-d83b-4c92-a2dc-b7e171ce93d7",
+                                    "key": "orgId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Deletes the contact from ledger\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "bc9a72b4-5556-4ded-b939-e8efa763470d",
+                            "name": "No Content",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/:contactId",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        ":contactId"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "contactId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "No Content",
+                            "code": 204,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete ledger contacts",
+                    "id": "7f144f51-e6fe-4d26-a559-da44dcfb14e2",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"contactIds\": [\n        \"dolor cupidatat magna enim in\",\n        \"ex minim aute est\"\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/bulk_delete",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId",
+                                "contacts",
+                                "bulk_delete"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "294ba73d-08cf-4ef7-9891-00ac70a535af",
+                                    "key": "orgId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "18567847-b2fd-4263-a02e-5013f11be235",
+                                    "key": "ledgerId",
+                                    "value": "reprehenderit e",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Delete ledger contacts in bulk by providing a list of contact IDs to delete\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "cf24b39b-62c4-4ec5-99af-9ad59c51917f",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"contactIds\": [\n        \"Excepteur Lorem\",\n        \"nisi commodo Lorem reprehender\"\n    ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/bulk_delete",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "bulk_delete"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "orgId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"countRowsDeleted\": 26057033.952127993\n}"
+                        },
+                        {
+                            "id": "fd57c9a6-b0b7-4dc4-b886-427930c1927c",
+                            "name": "Unprocessable Entity (WebDAV)",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"contactIds\": [\n        \"Excepteur Lorem\",\n        \"nisi commodo Lorem reprehender\"\n    ]\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId/contacts/bulk_delete",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId",
+                                        "contacts",
+                                        "bulk_delete"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "orgId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "reprehenderit e",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                            "code": 422,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                }
+            ],
+            "id": "2aa50d73-e6ce-4f33-8b56-a2cee5bf4e58"
+        },
+        {
+            "name": "Ledgers",
+            "item": [
+                {
+                    "name": "Get ledgers for account",
+                    "id": "49a8209c-d7f0-4f32-bd1e-c893e9c1892b",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "8c34723d-dc80-4c99-bf27-d89dc53ab5ec",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Gets list of ledgers for the org\nRole(s) required: viewer, editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "5b6f2ee7-b5d6-47ab-84c3-d02dfee9b877",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"ledgers\": [\n  {\n   \"id\": \"59\",\n   \"name\": \"string\",\n   \"description\": \"string\",\n   \"size\": 0,\n   \"href\": \"string\",\n   \"created_by\": \"string\",\n   \"created_at\": \"string\",\n   \"type\": \"ledger#ledger\"\n  }\n ]\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add a ledger to account",
+                    "id": "db8e37fa-945f-4ea9-abd8-a4827261f49e",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"updateCompany\": true,\n    \"updateLinkedin\": true,\n    \"updateEmail\": true\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "3d4be8ad-e589-4283-b746-68722d7bfcc4",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Create a new ledger\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "cda521f8-0a37-44ff-a7cb-c81dc3d84faf",
+                            "name": "Created",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"updateCompany\": true,\n    \"updateLinkedin\": true,\n    \"updateEmail\": true\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"id\": \"1234\",\n \"name\": \"main_ledger\",\n \"description\": \"string\",\n \"size\": 5,\n \"href\": \"/accounts/12/ledgers/1234\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update ledger",
+                    "id": "4ceda404-b3fd-4fe0-be8b-2b086c890392",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"string\",\n    \"description\": \"string\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "b3d47e9d-287f-4928-9fb4-e6c6bd86f768",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "a37acbfd-d4c6-4927-b4a9-72b3f873ea96",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Update the information of an existing ledger.\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "5b613d14-e25e-4b3a-8600-df8725cb0dc6",
+                            "name": "No Content",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"string\",\n    \"description\": \"string\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "No Content",
+                            "code": 204,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete ledger",
+                    "id": "304367d8-21e7-4e17-a024-fe7d1f411d7a",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "d16a3bc5-ee1a-48df-8895-da80c2f49c4d",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "51809bfe-9790-499b-8163-398ae854896e",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Delete an existing ledger\nRole(s) required: editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "958c0565-9c0c-485d-b258-1a4a5e639251",
+                            "name": "No Content",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "No Content",
+                            "code": 204,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get details for a ledger",
+                    "id": "47ef03c6-0665-459e-8aa1-b6b33367f197",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orgs",
+                                ":orgId",
+                                "ledgers",
+                                ":ledgerId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "4d699d77-14e9-4b9e-ad89-84260dbc4f59",
+                                    "key": "ledgerId",
+                                    "value": "LPONUMMS",
+                                    "description": "(Required) "
+                                },
+                                {
+                                    "id": "eb33a58b-7936-49f5-be9a-f762f89318c5",
+                                    "key": "orgId",
+                                    "value": "59",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "description": "Get the details for a specified ledger\nRole(s) required: viewer, editor, admin"
+                    },
+                    "response": [
+                        {
+                            "id": "29c3e899-1ac5-4382-806e-f160ec5a7eb2",
+                            "name": "OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/orgs/:orgId/ledgers/:ledgerId",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "orgs",
+                                        ":orgId",
+                                        "ledgers",
+                                        ":ledgerId"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "ledgerId",
+                                            "value": "LPONUMMS",
+                                            "description": "(Required) "
+                                        },
+                                        {
+                                            "key": "orgId",
+                                            "value": "59",
+                                            "description": "(Required) "
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n \"id\": \"59\",\n \"name\": \"string\",\n \"description\": \"string\",\n \"size\": 0,\n \"href\": \"string\",\n \"created_by\": \"string\",\n \"created_at\": \"string\",\n \"type\": \"ledger#ledger\"\n}"
+                        }
+                    ]
+                }
+            ],
+            "id": "c6ddd622-9080-4a59-a6cf-a0d85179dd90"
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "<Bearer Token>",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "id": "9aa8e7d8-7650-4cfd-89b6-39e84148097b",
+            "key": "baseUrl",
+            "value": "https://gotlivedata.io/api/ledger/v1",
+            "type": "string"
+        }
+    ]
+}

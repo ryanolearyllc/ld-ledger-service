@@ -1,0 +1,868 @@
+openapi: 3.0.0
+info:
+  title: Live Data Ledger API
+  version: '1.0'
+  description: 'Create and manage Live Data ledgers, including adding contacts and getting updates to employment.'
+  contact:
+    email: support@livedatatechnologies.com
+    name: LiveData Support
+    url: www.livedatatechnologies.com
+servers:
+  - url: 'https://gotlivedata.io/api/ledger/v1'
+    description: Production
+  - url: 'https://staging.gotlivedata.io/api/ledger/v1'
+    description: Staging
+  - url: 'https://alternate.gotlivedata.io/api/ledger/v1'
+    description: Alternate
+paths:
+  '/orgs/{orgId}/ledgers':
+    get:
+      summary: Get ledgers for account
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ledgers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ledger'
+              examples:
+                example-1:
+                  value:
+                    ledgers:
+                      - id: '59'
+                        name: string
+                        description: string
+                        size: 0
+                        href: string
+                        created_by: string
+                        created_at: string
+                        type: ledger#ledger
+      operationId: get-ledgers
+      description: |-
+        Gets list of ledgers for the org
+        Role(s) required: viewer, editor, admin
+      tags:
+        - Ledgers
+    post:
+      summary: Add a ledger to account
+      tags:
+        - Ledgers
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ledger'
+              examples:
+                example-1:
+                  value:
+                    id: '1234'
+                    name: main_ledger
+                    description: string
+                    size: 5
+                    href: /accounts/12/ledgers/1234
+      operationId: create-ledger
+      description: |-
+        Create a new ledger
+        Role(s) required: editor, admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                updateCompany:
+                  type: boolean
+                updateLinkedin:
+                  type: boolean
+                updateEmail:
+                  type: boolean
+              required:
+                - name
+            examples:
+              example-1:
+                value:
+                  name: string
+                  description: string
+                  updateCompany: true
+                  updateLinkedin: true
+                  updateEmail: true
+    parameters:
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+  '/orgs/{orgId}/ledgers/{ledgerId}':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    patch:
+      summary: Update ledger
+      tags:
+        - Ledgers
+      responses:
+        '204':
+          description: No Content
+      operationId: update-ledger
+      description: |-
+        Update the information of an existing ledger.
+        Role(s) required: editor, admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  name: string
+                  description: string
+    delete:
+      summary: Delete ledger
+      tags:
+        - Ledgers
+      responses:
+        '204':
+          description: No Content
+      operationId: delete-ledger
+      description: |-
+        Delete an existing ledger
+        Role(s) required: editor, admin
+    get:
+      summary: Get details for a ledger
+      operationId: get-ledger
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ledger'
+              examples:
+                example-1:
+                  value:
+                    id: '59'
+                    name: string
+                    description: string
+                    size: 0
+                    href: string
+                    created_by: string
+                    created_at: string
+                    type: ledger#ledger
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      tags:
+        - Ledgers
+      description: |-
+        Get the details for a specified ledger
+        Role(s) required: viewer, editor, admin
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Get list of contacts from ledger
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contacts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Contact'
+                required:
+                  - contacts
+              examples:
+                example-1:
+                  value:
+                    contacts:
+                      - id: string
+                        name: string
+                        company: string
+                        linkedin: string
+                        email: string
+                        phone: string
+                        title: string
+                        importedFrom:
+                          id: string
+                          fileName: string
+                          importFinishedAt: string
+                          type: ledger#import
+                        createdAt: string
+                        changedAt: string
+                        type: ledger#contact
+      operationId: get-ledger-contacts
+      description: |-
+        Gets a list of contacts for the ledger
+        Role(s) required: viewer, editor, admin
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: company
+        - schema:
+            type: string
+          in: query
+          name: domain
+        - schema:
+            type: string
+          in: query
+          name: title
+        - schema:
+            type: string
+          in: query
+          name: name
+        - schema:
+            type: string
+            enum:
+              - +name
+              - '-name'
+          in: query
+          name: sortBy
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: integer
+          in: query
+          name: offset
+        - schema:
+            type: string
+          in: query
+          name: fromDate
+        - schema:
+            type: string
+          in: query
+          name: endDate
+        - schema:
+            type: boolean
+          in: query
+          name: isVerified
+        - schema:
+            type: string
+          in: query
+          name: referenceId
+        - schema:
+            type: string
+          in: query
+          name: importCompany
+        - schema:
+            type: string
+          in: query
+          name: importTitle
+      tags:
+        - Ledger Contacts
+    post:
+      summary: Add contacts to ledger
+      operationId: add-ledger-contact
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imports'
+              examples:
+                example-1:
+                  value:
+                    guid: string
+                    fileName: string
+                    contacts_num: 0
+                    imported_by: string
+                    status: in_progress
+                    import_started_at: string
+        '422':
+          description: 'One or more contacts specified in the body does not contain the required fields, or contains invalid fields'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ContactBody'
+            examples:
+              example-1:
+                value:
+                  contacts:
+                    - id: string
+                      name: string
+                      company: string
+                      linkedin: string
+                      email: string
+                      phone: string
+        description: 'When POSTing contact data, the `name` and `company` fields are required for every contact in the array. The other fields are optional.'
+      description: |-
+        Asynchronously import contacts via json body. This API call is limited to adding only 25 contacts. For importing larger sets of contacts, use the contacts/imports endpoint. The response from this call is an ImportID which can be checked to determined the status of the import.
+        Role(s) required: editor, admin
+      tags:
+        - Ledger Contacts
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/download':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Download ledger contacts as file
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+      operationId: download-ledger-contacts
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: company
+          description: Filter on company field
+        - schema:
+            type: string
+          in: query
+          name: title
+          description: Filter on title field
+        - schema:
+            type: string
+          in: query
+          name: domain
+          description: Filter on domain field
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: Filter on name field
+        - schema:
+            type: string
+            enum:
+              - +name
+              - '-name'
+          in: query
+          name: sortBy
+          description: Sort the results by the specified field
+        - schema:
+            type: string
+          in: query
+          name: referenceId
+          description: Filter on reference Id
+        - schema:
+            type: string
+          in: query
+          name: fromDate
+        - schema:
+            type: string
+          in: query
+          name: endDate
+        - schema:
+            type: string
+          in: query
+          name: isVerified
+        - schema:
+            type: string
+          in: query
+          name: importCompany
+        - schema:
+            type: string
+          in: query
+          name: importTitle
+      description: |-
+        Returns CSV like /api/v1/dwh/sample/download
+
+        Use querystring parameters to filter the results that are returned in the file. 
+        Role(s) required: viewer, editor, admin
+      tags:
+        - Ledger Contacts
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Get all file upload jobs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imports:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Imports'
+                required:
+                  - imports
+              examples:
+                example-1:
+                  value:
+                    imports:
+                      - guid: string
+                        fileName: string
+                        contactsNum: 0
+                        importedBy: string
+                        status: in_progress
+                        iimportStartedAt: string
+                        importFinishedAt: string
+                        errorsCsvHref: string
+                        type: ledger#import
+      operationId: get-import-jobs
+      description: |-
+        Get a list of all contact import jobs for this ledger
+        Role(s) required: viewer, editor, admin
+      tags:
+        - Contact Imports
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - in_progress
+              - complete
+          in: query
+          name: status
+        - schema:
+            type: string
+          in: query
+          name: fileName
+        - schema:
+            type: string
+          in: query
+          name: sortBy
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - name: offset
+        - schema:
+            type: integer
+          in: query
+          name: offset
+        - schema:
+            type: string
+          in: query
+          name: importType
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: importId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Get file import info
+      operationId: get-import-job
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imports'
+              examples:
+                example-1:
+                  value:
+                    guid: string
+                    fileName: string
+                    contactsNum: 0
+                    importedBy: string
+                    status: in_progress
+                    iimportStartedAt: string
+                    importFinishedAt: string
+                    errorsCsvHref: string
+                    type: ledger#import
+      description: |-
+        Get the info for an import
+        Same as GLD clean
+        Role(s) required: viewer, editor, admin
+      tags:
+        - Contact Imports
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}/downloadErrors':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: importId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Get import errors
+      operationId: get-import-errors
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+                properties: {}
+      description: Get the errors CSV from an import
+      tags:
+        - Contact Imports
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/{contactId}':
+    parameters:
+      - schema:
+          type: string
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: contactId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: orgId
+        in: path
+        required: true
+    delete:
+      summary: Remove contact from ledger
+      tags:
+        - Ledger Contacts
+      responses:
+        '204':
+          description: No Content
+      operationId: delete-ledger-contact
+      description: |-
+        Deletes the contact from ledger
+        Role(s) required: editor, admin
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/flatfile':
+    parameters:
+      - schema:
+          type: string
+        name: orgId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: ledgerId
+        in: path
+        required: true
+    post:
+      summary: Import contacts from Flatfile
+      tags:
+        - Contact Imports
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imports'
+      operationId: import-contacts-flatfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileName:
+                  type: string
+                contactsNum:
+                  type: number
+                batchId:
+                  type: string
+                originalRows:
+                  type: number
+                manual:
+                  type: boolean
+      x-internal: false
+      description: |-
+        Create a new import job from a Flatfile import
+        Role(s) required: editor, admin
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/bulk_delete':
+    parameters:
+      - schema:
+          type: string
+        name: orgId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: ledgerId
+        in: path
+        required: true
+    post:
+      summary: Delete ledger contacts
+      tags:
+        - Ledger Contacts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countRowsDeleted:
+                    type: number
+        '422':
+          description: Unprocessable Entity (WebDAV)
+      operationId: bulk-delete-ledger-contacts
+      description: |-
+        Delete ledger contacts in bulk by providing a list of contact IDs to delete
+        Role(s) required: editor, admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                contactIds:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - contactIds
+components:
+  schemas:
+    Contact:
+      title: contact
+      type: object
+      examples:
+        - id: string
+          name: string
+          company: string
+          linkedin: string
+          email: string
+          phone: string
+          title: string
+          importedFrom:
+            id: string
+            fileName: string
+            importFinishedAt: string
+            type: ledger#import
+          createdAt: string
+          changedAt: string
+          type: ledger#contact
+      description: The contact model when contact data is returned from a ledger
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        company:
+          type: string
+        linkedin:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        title:
+          type: string
+        importedFrom:
+          $ref: '#/components/schemas/Imports'
+        createdAt:
+          type: string
+          description: Date at which this contact was added to this ledger
+        lastChangedAt:
+          type: string
+          description: Most recent date at which LiveData changed this contact's information
+        type:
+          type: string
+          default: ledger#contact
+        importCompany:
+          type: string
+        importTitle:
+          type: string
+        referenceId:
+          type: string
+      required:
+        - id
+        - name
+        - createdAt
+    ContactBody:
+      title: contactBody
+      type: object
+      examples:
+        - id: string
+          name: string
+          company: string
+          linkedin: string
+          email: string
+          phone: string
+      description: The contact model used when creating a new contact in a new ledger
+      properties:
+        name:
+          type: string
+        company:
+          type: string
+        linkedin:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        title:
+          type: string
+        referenceId:
+          type: string
+    Imports:
+      title: imports
+      type: object
+      examples:
+        - id: string
+          fileName: string
+          contactsNum: 0
+          importedBy: string
+          status: in_progress
+          startedAt: string
+          finishedAt: string
+          errorsCsvHref: string
+          type: ledger#import
+      properties:
+        id:
+          type: string
+        fileName:
+          type: string
+        contactsNum:
+          type: integer
+        importedBy:
+          type: string
+        status:
+          type: string
+          enum:
+            - in_progress
+            - complete
+          readOnly: true
+        startedAt:
+          type: string
+        finishedAt:
+          type: string
+        errorsCsvHref:
+          type: string
+        type:
+          type: string
+          default: ledger#import
+    Ledger:
+      title: ledger
+      type: object
+      examples:
+        - id: '59'
+          name: string
+          description: string
+          size: 0
+          href: string
+          created_by: string
+          created_at: string
+          type: ledger#ledger
+      properties:
+        id:
+          type: string
+          example: '59'
+        name:
+          type: string
+        description:
+          type: string
+        size:
+          type: integer
+        href:
+          type: string
+        createdAt:
+          type: string
+        type:
+          type: string
+          default: ledger#ledger
+      required:
+        - id
+        - name
+  securitySchemes:
+    Access Token:
+      type: http
+      scheme: bearer
+tags:
+  - name: Contact Imports
+  - name: Contacts
+  - name: Ledger Contacts
+  - name: Ledgers
+security:
+  - Access Token: []
