@@ -34,10 +34,10 @@ paths:
                 example-1:
                   value:
                     ledgers:
-                      - id: '59'
-                        name: string
+                      - id: l_123559
+                        name: Default
                         description: string
-                        size: 0
+                        size: 1569
                         href: string
                         created_by: string
                         created_at: string
