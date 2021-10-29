@@ -497,7 +497,6 @@ paths:
             type: integer
           in: query
           name: limit
-        - name: offset
         - schema:
             type: integer
           in: query
@@ -707,22 +706,6 @@ components:
     Contact:
       title: contact
       type: object
-      examples:
-        - id: string
-          name: string
-          company: string
-          linkedin: string
-          email: string
-          phone: string
-          title: string
-          importedFrom:
-            id: string
-            fileName: string
-            importFinishedAt: string
-            type: ledger#import
-          createdAt: string
-          changedAt: string
-          type: ledger#contact
       description: The contact model when contact data is returned from a ledger
       properties:
         id:
@@ -763,13 +746,6 @@ components:
     ContactBody:
       title: contactBody
       type: object
-      examples:
-        - id: string
-          name: string
-          company: string
-          linkedin: string
-          email: string
-          phone: string
       description: The contact model used when creating a new contact in a new ledger
       properties:
         name:
@@ -789,16 +765,6 @@ components:
     Imports:
       title: imports
       type: object
-      examples:
-        - id: string
-          fileName: string
-          contactsNum: 0
-          importedBy: string
-          status: in_progress
-          startedAt: string
-          finishedAt: string
-          errorsCsvHref: string
-          type: ledger#import
       properties:
         id:
           type: string
@@ -826,15 +792,6 @@ components:
     Ledger:
       title: ledger
       type: object
-      examples:
-        - id: '59'
-          name: string
-          description: string
-          size: 0
-          href: string
-          created_by: string
-          created_at: string
-          type: ledger#ledger
       properties:
         id:
           type: string
