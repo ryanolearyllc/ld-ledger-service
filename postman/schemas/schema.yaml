@@ -789,6 +789,17 @@ components:
         type:
           type: string
           default: ledger#import
+        importedByUser:
+          type: object
+          properties:
+            email:
+              type: string
+            name:
+              type: string
+            createdAt:
+              type: string
+            type:
+              type: string
     Ledger:
       title: ledger
       type: object
