@@ -62,9 +62,10 @@ jobs:
       - name: Build NPM
         run: npm run build
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish NPM package
+        run: npm publish dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
       - name: Push version tag
         run: git push
