@@ -56,13 +56,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "7d688fa8-a795-4692-9268-3bdc911aace7",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "f05f8a99-477d-4e49-9dfe-1d6fb0d178b3",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -139,7 +137,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -174,19 +172,16 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "c9e036e6-09e8-4824-b353-8ee3b2763a50",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "e12892fb-c4fb-4c67-8840-38106039715a",
                                     "key": "importId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "376dde93-53e4-427a-b393-62f225a2406c",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -243,7 +238,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -279,19 +274,16 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "1b2061dc-0e19-4001-8f63-fc85dd358a01",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "d05a426e-f103-4461-a734-09cc0d460439",
                                     "key": "importId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "7dd7548e-3a7a-4ebc-b502-87152a89aba6",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -349,7 +341,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -398,13 +390,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "5c1a0815-9497-4055-bfcd-390dd666418a",
                                     "key": "orgId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "14a4ff70-9e85-4760-8f1f-d38a5cf1c4ae",
                                     "key": "ledgerId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
@@ -465,7 +455,7 @@
                             },
                             "status": "Created",
                             "code": 201,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -563,13 +553,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "493a6dc1-3f5e-43aa-ac1c-331662f42cb2",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "8706d515-b611-4277-9a70-3997790c378d",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -673,7 +661,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -720,13 +708,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "c1406003-f878-426e-a141-4866ca0e08d2",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "f4a9a393-5176-42e6-b85d-7160756a5cce",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -785,7 +771,7 @@
                             },
                             "status": "Created",
                             "code": 201,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -845,7 +831,7 @@
                             },
                             "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
                             "code": 422,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -879,34 +865,34 @@
                             ],
                             "query": [
                                 {
+                                    "description": "Filter on company field",
                                     "key": "company",
-                                    "value": "eu nulla tempor ipsum amet",
-                                    "description": "Filter on company field"
+                                    "value": "eu nulla tempor ipsum amet"
                                 },
                                 {
+                                    "description": "Filter on title field",
                                     "key": "title",
-                                    "value": "eu nulla tempor ipsum amet",
-                                    "description": "Filter on title field"
+                                    "value": "eu nulla tempor ipsum amet"
                                 },
                                 {
+                                    "description": "Filter on domain field",
                                     "key": "domain",
-                                    "value": "eu nulla tempor ipsum amet",
-                                    "description": "Filter on domain field"
+                                    "value": "eu nulla tempor ipsum amet"
                                 },
                                 {
+                                    "description": "Filter on name field",
                                     "key": "name",
-                                    "value": "eu nulla tempor ipsum amet",
-                                    "description": "Filter on name field"
+                                    "value": "eu nulla tempor ipsum amet"
                                 },
                                 {
+                                    "description": "Sort the results by the specified field",
                                     "key": "sortBy",
-                                    "value": "+name",
-                                    "description": "Sort the results by the specified field"
+                                    "value": "+name"
                                 },
                                 {
+                                    "description": "Filter on reference Id",
                                     "key": "referenceId",
-                                    "value": "eu nulla tempor ipsum amet",
-                                    "description": "Filter on reference Id"
+                                    "value": "eu nulla tempor ipsum amet"
                                 },
                                 {
                                     "key": "fromDate",
@@ -931,13 +917,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "dd58ca6a-bfc2-437c-9419-662a3a8387da",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "897f00a0-dd54-46ee-8d49-865e6c64b17d",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -1034,7 +1018,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1068,19 +1052,16 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "be1fb02d-82ca-43d0-903d-599ac2381164",
                                     "key": "ledgerId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "2cf1eb3a-32a3-4798-ac48-b57e817e1d5e",
                                     "key": "contactId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "ce59dc14-2891-471b-b131-a2230b888504",
                                     "key": "orgId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
@@ -1136,7 +1117,7 @@
                             },
                             "status": "No Content",
                             "code": 204,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1184,13 +1165,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "9b3d281a-22f8-48c2-91ae-d9f1ffb216e2",
                                     "key": "orgId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "0cabae23-5af3-433f-b3e8-15cfc3fd69f9",
                                     "key": "ledgerId",
                                     "value": "eu nulla tempor ipsum amet",
                                     "description": "(Required) "
@@ -1250,7 +1229,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1311,7 +1290,7 @@
                             },
                             "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
                             "code": 422,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1348,7 +1327,6 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "63c5e4be-b3d1-4b28-ae7a-3777f43a43e8",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -1391,7 +1369,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1436,7 +1414,6 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "25869096-cdb8-4fea-808b-625273b49b60",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -1488,7 +1465,7 @@
                             },
                             "status": "Created",
                             "code": 201,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1534,13 +1511,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "dbed1deb-9b39-4a55-8b7e-8aca5bd71206",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "7dd2eeb7-584c-4239-8018-4c3a6eb4c5ad",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -1598,7 +1573,7 @@
                             },
                             "status": "No Content",
                             "code": 204,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1630,13 +1605,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "992058f4-de9c-4fa0-9a5a-bbdc34ce7f15",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "340764c3-25c9-494b-8643-12d3ffa48e8a",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -1685,7 +1658,7 @@
                             },
                             "status": "No Content",
                             "code": 204,
-                            "_postman_previewlanguage": "text",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1717,13 +1690,11 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "c9957537-c437-4368-a727-315a7c784203",
                                     "key": "ledgerId",
                                     "value": "LPONUMMS",
                                     "description": "(Required) "
                                 },
                                 {
-                                    "id": "9ef9e9fa-a06e-4714-941b-74ee2ef8b8b7",
                                     "key": "orgId",
                                     "value": "59",
                                     "description": "(Required) "
@@ -1772,7 +1743,7 @@
                             },
                             "status": "OK",
                             "code": 200,
-                            "_postman_previewlanguage": "json",
+                            "_postman_previewlanguage": "Text",
                             "header": [
                                 {
                                     "key": "Content-Type",
@@ -1787,6 +1758,93 @@
                 }
             ],
             "id": "224df00f-b5a6-4640-b58c-667e2810b694"
+        },
+        {
+            "name": "Get Ledger Maintenance Mode Status",
+            "id": "e83a8034-3d49-45c8-bd20-23fbb70b104c",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/maintenance",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "maintenance"
+                    ]
+                },
+                "description": "Gets whether or not ledgers are in maintenance mode"
+            },
+            "response": []
+        },
+        {
+            "name": "Set Ledger API Maintenance Mode",
+            "id": "0baa0acd-8ee6-4491-b916-d6811b15eea2",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"maintenance\": \"on\"\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/maintenance",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "maintenance"
+                    ]
+                },
+                "description": "Sets the maintenance mode of the ledger service"
+            },
+            "response": [
+                {
+                    "id": "f48f444d-bcac-4bb7-90c9-56a9e339c285",
+                    "name": "OK",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"maintenance\": \"off\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/maintenance",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "maintenance"
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": ""
+                }
+            ]
         }
     ],
     "auth": {
@@ -1823,9 +1881,10 @@
     ],
     "variable": [
         {
-            "id": "da39ca0d-f4b9-4a63-b284-ba8b240b66a2",
+            "id": "48692627-5c1b-4657-8291-609670105336",
             "key": "baseUrl",
-            "value": "{{host}}/api/ledger/v1"
+            "value": "https://gotlivedata.io/api/ledger/v1",
+            "type": "string"
         }
     ]
 }
