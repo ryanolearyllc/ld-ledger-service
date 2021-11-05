@@ -6,11 +6,8 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ masterboom ]
-    tags-ignore:
-      - '**'
-#   pull_request:
-#     branches: [ master ]
+    branches: [ master ]
+    paths: 'postman/schemas/schema.yaml'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,7 +32,7 @@ jobs:
         uses: ducksify/swagger-codegen-action@v3.0
         with:
           # Arguments
-          args: generate -l typescript-angular -i Ledger.yaml -c options-ledger.json
+          args: generate -l typescript-angular -i postman/schemas/schema.yaml -c options-ledger.json
 
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -65,9 +62,10 @@ jobs:
       - name: Build NPM
         run: npm run build
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish NPM package
+        run: npm publish dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
       - name: Push version tag
         run: git push
