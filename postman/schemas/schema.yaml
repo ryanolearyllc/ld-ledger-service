@@ -294,6 +294,10 @@ paths:
             type: string
           in: query
           name: importTitle
+        - schema:
+            type: string
+          in: query
+          name: linkedin
       tags:
         - Ledger Contacts
     post:
@@ -421,6 +425,10 @@ paths:
             type: string
           in: query
           name: importTitle
+        - schema:
+            type: string
+          in: query
+          name: linkedin
       description: |-
         Returns CSV like /api/v1/dwh/sample/download
 
@@ -714,13 +722,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  maintenance:
+                  ledgerMaintenance:
                     type: string
                     enum:
                       - 'on'
                       - 'off'
                 required:
-                  - maintenance
+                  - ledgerMaintenance
       operationId: get-maintenance-mode
       description: Gets whether or not ledgers are in maintenance mode
     post:
