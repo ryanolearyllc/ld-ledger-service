@@ -701,6 +701,51 @@ paths:
                     type: string
               required:
                 - contactIds
+  /maintenance:
+    get:
+      summary: Get Ledger Maintenance Mode Status
+      tags:
+        - Administrative
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  maintenance:
+                    type: string
+                    enum:
+                      - 'on'
+                      - 'off'
+                required:
+                  - maintenance
+      operationId: get-maintenance-mode
+      description: Gets whether or not ledgers are in maintenance mode
+    post:
+      summary: Set Ledger API Maintenance Mode
+      operationId: set-maintenance-mode
+      responses:
+        '200':
+          description: OK
+      x-internal: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maintenance:
+                  type: string
+                  enum:
+                    - 'on'
+                    - 'off'
+              required:
+                - maintenance
+      description: Sets the maintenance mode of the ledger service
+      tags:
+        - Administrative
 components:
   schemas:
     Contact:
@@ -828,6 +873,7 @@ components:
       type: http
       scheme: bearer
 tags:
+  - name: Administrative
   - name: Contact Imports
   - name: Contacts
   - name: Ledger Contacts
