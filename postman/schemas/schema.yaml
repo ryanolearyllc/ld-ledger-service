@@ -726,7 +726,7 @@ paths:
                 required:
                   - ledgerMaintenance
       operationId: get-maintenance-mode
-      description: Gets whether or not ledgers are in maintenance mode
+      description: 'Gets whether or not ledgers are in maintenance mode. When maintenance mode is turned on, only GET requests are allowed. All other requests will return a 503. '
 components:
   schemas:
     Contact:
