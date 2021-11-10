@@ -466,19 +466,7 @@ paths:
               schema:
                 type: object
       operationId: get-duplicate-contacts
-      parameters:
-        - schema:
-            type: string
-            enum:
-              - +name
-              - '-name'
-          in: query
-          name: sortBy
-          description: Sort the results by the specified field
-        - schema:
-            type: string
-          in: query
-          name: isVerified
+      parameters: []
       description: ''
       tags:
         - Ledger Contacts
