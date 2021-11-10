@@ -212,7 +212,7 @@ paths:
                       $ref: '#/components/schemas/Contact'
                   count:
                     type: number
-                    description: Count of contacts that match the filter. Available when using view `count`
+                    description: Count of contacts that match the filter. Provided in the `count` view.
               examples:
                 example-1:
                   value:
