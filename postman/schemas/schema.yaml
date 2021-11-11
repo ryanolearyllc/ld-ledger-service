@@ -207,10 +207,12 @@ paths:
                 properties:
                   contacts:
                     type: array
+                    description: List of contacts. Provided in the `default` view.
                     items:
                       $ref: '#/components/schemas/Contact'
-                required:
-                  - contacts
+                  count:
+                    type: number
+                    description: Count of contacts that match the filter. Provided in the `count` view.
               examples:
                 example-1:
                   value:
@@ -294,6 +296,14 @@ paths:
             type: string
           in: query
           name: linkedin
+        - schema:
+            type: string
+            enum:
+              - default
+              - count
+          in: query
+          name: view
+          description: Optionally provides a different view of the data. Using `count` returns only the count of items that match this query.
       tags:
         - Ledger Contacts
     post:
@@ -430,6 +440,34 @@ paths:
 
         Use querystring parameters to filter the results that are returned in the file. 
         Role(s) required: viewer, editor, admin
+      tags:
+        - Ledger Contacts
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/duplicates':
+    parameters:
+      - schema:
+          type: string
+          example: LPONUMMS
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+          example: '59'
+        name: orgId
+        in: path
+        required: true
+    get:
+      summary: Get list of contacts that are duplicates on this ledger
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+      operationId: get-duplicate-contacts
+      parameters: []
+      description: ''
       tags:
         - Ledger Contacts
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports':
