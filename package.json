@@ -1,6 +1,6 @@
 {
   "name": "@roleary-ldt/ledger-service-api",
-  "version": "0.0.83",
+  "version": "0.0.84",
   "description": "swagger client for @roleary-ldt/ledger-service-api",
   "author": "Swagger Codegen Contributors",
   "keywords": [
