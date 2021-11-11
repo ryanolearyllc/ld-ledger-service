@@ -765,6 +765,29 @@ paths:
                   - ledgerMaintenance
       operationId: get-maintenance-mode
       description: 'Gets whether or not ledgers are in maintenance mode. When maintenance mode is turned on, only GET requests are allowed. All other requests will return a 503. '
+    post:
+      summary: Set Ledger API Maintenance Mode
+      operationId: set-maintenance-mode
+      responses:
+        '200':
+          description: OK
+      x-internal: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maintenance:
+                  type: string
+                  enum:
+                    - 'on'
+                    - 'off'
+              required:
+                - maintenance
+      description: Sets the maintenance mode of the ledger service
+      tags:
+        - Administrative
 components:
   schemas:
     Contact:
