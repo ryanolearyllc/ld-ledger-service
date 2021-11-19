@@ -462,7 +462,7 @@ paths:
         '200':
           description: OK
           content:
-            text/csv:
+            application/json:
               schema:
                 type: object
       operationId: get-duplicate-contacts
