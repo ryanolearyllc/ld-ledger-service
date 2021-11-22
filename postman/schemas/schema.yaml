@@ -341,12 +341,13 @@ paths:
               example-1:
                 value:
                   contacts:
-                    - id: string
-                      name: string
+                    - name: string
                       company: string
                       linkedin: string
                       email: string
                       phone: string
+                      title: string
+                      referenceId: string
         description: 'When POSTing contact data, the `name` and `company` fields are required for every contact in the array. The other fields are optional.'
       description: |-
         Asynchronously import contacts via json body. This API call is limited to adding only 25 contacts. For importing larger sets of contacts, use the contacts/imports endpoint. The response from this call is an ImportID which can be checked to determined the status of the import.
@@ -849,6 +850,15 @@ components:
           type: string
         referenceId:
           type: string
+      x-examples:
+        example-1:
+          name: string
+          company: string
+          linkedin: string
+          email: string
+          phone: string
+          title: string
+          referenceId: string
     Imports:
       title: imports
       type: object
