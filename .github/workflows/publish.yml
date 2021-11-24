@@ -6,7 +6,7 @@ name: Docs-Publish
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths: 'postman/schemas/schema.yaml'
 
   # Allows you to run this workflow manually from the Actions tab
