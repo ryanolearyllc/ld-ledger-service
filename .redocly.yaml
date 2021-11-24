@@ -1,0 +1,7 @@
+lint:
+  extends:
+    - recommended
+  plugins:
+    - './openapi/plugins/remove-internal.js'
+  decorators:
+    ld/remove-internal-operations: error
