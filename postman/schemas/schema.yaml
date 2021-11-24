@@ -13,7 +13,7 @@ servers:
 paths:
   '/orgs/{orgId}/ledgers':
     get:
-      summary: Get ledgers for account
+      summary: Get ledgers for org
       responses:
         '200':
           description: OK
@@ -41,7 +41,7 @@ paths:
       operationId: get-ledgers
       description: |-
         Gets list of ledgers for the org
-        Role(s) required: viewer, editor, admin
+        Role(s) permitted: viewer, editor, admin
       tags:
         - Ledgers
     post:
@@ -66,7 +66,7 @@ paths:
       operationId: create-ledger
       description: |-
         Create a new ledger
-        Role(s) required: editor, admin
+        Role(s) permitted: editor, admin
       requestBody:
         content:
           application/json:
@@ -124,7 +124,7 @@ paths:
       operationId: update-ledger
       description: |-
         Update the information of an existing ledger.
-        Role(s) required: editor, admin
+        Role(s) permitted: editor, admin
       requestBody:
         content:
           application/json:
@@ -149,8 +149,8 @@ paths:
           description: No Content
       operationId: delete-ledger
       description: |-
-        Delete an existing ledger
-        Role(s) required: editor, admin
+        Delete an existing ledger. This delete happens immediately and all ledger contacts are permanently removed from Live Data.
+        Role(s) permitted: editor, admin
     get:
       summary: Get details for a ledger
       operationId: get-ledger
@@ -180,7 +180,7 @@ paths:
         - Ledgers
       description: |-
         Get the details for a specified ledger
-        Role(s) required: viewer, editor, admin
+        Role(s) permitted: viewer, editor, admin
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts':
     parameters:
       - schema:
@@ -234,8 +234,9 @@ paths:
                         type: ledger#contact
       operationId: get-ledger-contacts
       description: |-
-        Gets a list of contacts for the ledger
-        Role(s) required: viewer, editor, admin
+        Gets a list of contacts for the ledger. Any of the contact attributes listed in the querystring parameters can be used as filters (filters operate as partial matches). Use the limit and offset parameters to limit results and improve performance. We recommend always using the fromDate filter to get contacts that have only changed since the specified date.
+        Use the /contacts/download endpoint to return the results as CSV.
+        Role(s) permitted: viewer, editor, admin
       parameters:
         - schema:
             type: string
@@ -350,8 +351,8 @@ paths:
                       referenceId: string
         description: 'When POSTing contact data, the `name` and `company` fields are required for every contact in the array. The other fields are optional.'
       description: |-
-        Asynchronously import contacts via json body. This API call is limited to adding only 25 contacts. For importing larger sets of contacts, use the contacts/imports endpoint. The response from this call is an ImportID which can be checked to determined the status of the import.
-        Role(s) required: editor, admin
+        Asynchronously import contacts via json body. The response from this call is an ImportID which can be checked to determined the status of the import.
+        Role(s) permitted: editor, admin
       tags:
         - Ledger Contacts
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/download':
@@ -437,10 +438,9 @@ paths:
           in: query
           name: linkedin
       description: |-
-        Returns CSV like /api/v1/dwh/sample/download
-
-        Use querystring parameters to filter the results that are returned in the file. 
-        Role(s) required: viewer, editor, admin
+        Gets a list of contacts for the ledger. Any of the contact attributes listed in the querystring parameters can be used as filters (filters operate as partial matches). 
+        Use the /contacts endpoint to return the results as JSON.
+        Role(s) permitted: viewer, editor, admin
       tags:
         - Ledger Contacts
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/duplicates':
@@ -468,9 +468,10 @@ paths:
                 type: object
       operationId: get-duplicate-contacts
       parameters: []
-      description: ''
+      description: MARKED INTERNAL until validated with UI implementation
       tags:
         - Ledger Contacts
+      x-internal: true
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports':
     parameters:
       - schema:
@@ -516,8 +517,8 @@ paths:
                         type: ledger#import
       operationId: get-import-jobs
       description: |-
-        Get a list of all contact import jobs for this ledger
-        Role(s) required: viewer, editor, admin
+        Get a list of all contact import jobs for this ledger.
+        Role(s) permitted: viewer, editor, admin
       tags:
         - Contact Imports
       parameters:
@@ -590,9 +591,8 @@ paths:
                     errorsCsvHref: string
                     type: ledger#import
       description: |-
-        Get the info for an import
-        Same as GLD clean
-        Role(s) required: viewer, editor, admin
+        Get details for a specific import job.
+        Role(s) permitted: viewer, editor, admin
       tags:
         - Contact Imports
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}/downloadErrors':
@@ -625,7 +625,9 @@ paths:
               schema:
                 type: object
                 properties: {}
-      description: Get the errors CSV from an import
+      description: |-
+        Get the errors CSV from an import that details which contacts were not imported during an import job and the reason behind each.
+        Role(s) permitted: viewer, editor, admin
       tags:
         - Contact Imports
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/{contactId}':
@@ -654,8 +656,8 @@ paths:
           description: No Content
       operationId: delete-ledger-contact
       description: |-
-        Deletes the contact from ledger
-        Role(s) required: editor, admin
+        Deletes the specified contact from ledger.
+        Role(s) permitted: editor, admin
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/flatfile':
     parameters:
       - schema:
@@ -696,9 +698,9 @@ paths:
                   type: number
                 manual:
                   type: boolean
-      x-internal: false
+      x-internal: true
       description: |-
-        Create a new import job from a Flatfile import
+        Create a new import job from a Flatfile import. Not listed publicly as users won't use this directly.
         Role(s) required: editor, admin
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/bulk_delete':
     parameters:
@@ -730,8 +732,8 @@ paths:
           description: Unprocessable Entity (WebDAV)
       operationId: bulk-delete-ledger-contacts
       description: |-
-        Delete ledger contacts in bulk by providing a list of contact IDs to delete
-        Role(s) required: editor, admin
+        Delete ledger contacts in bulk by providing a list of contact IDs to delete.
+        Role(s) permitted: editor, admin
       requestBody:
         content:
           application/json:
@@ -766,6 +768,7 @@ paths:
                   - ledgerMaintenance
       operationId: get-maintenance-mode
       description: 'Gets whether or not ledgers are in maintenance mode. When maintenance mode is turned on, only GET requests are allowed. All other requests will return a 503. '
+      x-internal: true
     post:
       summary: Set Ledger API Maintenance Mode
       operationId: set-maintenance-mode
