@@ -77,22 +77,13 @@ paths:
                   type: string
                 description:
                   type: string
-                updateCompany:
-                  type: boolean
-                updateLinkedin:
-                  type: boolean
-                updateEmail:
-                  type: boolean
               required:
                 - name
             examples:
               example-1:
                 value:
-                  name: string
-                  description: string
-                  updateCompany: true
-                  updateLinkedin: true
-                  updateEmail: true
+                  name: My Ledger
+                  description: Customer contacts to track
     parameters:
       - schema:
           type: string
@@ -138,8 +129,8 @@ paths:
             examples:
               example-1:
                 value:
-                  name: string
-                  description: string
+                  name: My new name
+                  description: A better description
     delete:
       summary: Delete ledger
       tags:
@@ -214,24 +205,25 @@ paths:
                     type: number
                     description: Count of contacts that match the filter. Provided in the `count` view.
               examples:
-                example-1:
+                Default view response:
                   value:
                     contacts:
                       - id: string
                         name: string
                         company: string
                         linkedin: string
-                        email: string
-                        phone: string
                         title: string
-                        importedFrom:
-                          id: string
-                          fileName: string
-                          importFinishedAt: string
-                          type: ledger#import
                         createdAt: string
-                        changedAt: string
+                        lastChangedAt: string
                         type: ledger#contact
+                        importCompany: string
+                        importTitle: string
+                        referenceId: string
+                        isVerified: true
+                        ledgerImportId: string
+                Count view response:
+                  value:
+                    count: 0
       operationId: get-ledger-contacts
       description: |-
         Gets a list of contacts for the ledger. Any of the contact attributes listed in the querystring parameters can be used as filters (filters operate as partial matches). Use the limit and offset parameters to limit results and improve performance. We recommend always using the fromDate filter to get contacts that have only changed since the specified date.
@@ -242,61 +234,68 @@ paths:
             type: string
           in: query
           name: company
-        - schema:
-            type: string
-          in: query
-          name: domain
+          description: Company name to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: title
+          description: Job title to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: name
+          description: Contact name to filter on. Partial match.
         - schema:
             type: string
-            enum:
-              - +name
-              - '-name'
+            example: '-name'
           in: query
           name: sortBy
+          description: Which field to sort on. Use the pattern +name to sort ascending and -name to sort descending.
         - schema:
             type: integer
           in: query
           name: limit
+          description: Number of records to return. Use to improve performance for large ledgers. Used in conjunction with offset.
         - schema:
             type: integer
           in: query
           name: offset
+          description: Record number to start at when returning results. Used in conjunction with limit.
         - schema:
             type: string
           in: query
           name: fromDate
+          description: Only return contacts that Live Data has updated since the provided date.
         - schema:
             type: string
           in: query
           name: endDate
+          description: Only provide contacts that Live Data has updated prior to the provided date.
         - schema:
             type: boolean
           in: query
           name: isVerified
+          description: Filter results on whether or not the contacts have been verified by Live Data.
         - schema:
             type: string
           in: query
           name: referenceId
+          description: 'Reference ID to filter on. '
         - schema:
             type: string
           in: query
           name: importCompany
+          description: Imported company name to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: importTitle
+          description: Imported job title to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: linkedin
+          description: LinkedIn value to filter on. Partial match.
         - schema:
             type: string
             enum:
@@ -345,8 +344,6 @@ paths:
                     - name: string
                       company: string
                       linkedin: string
-                      email: string
-                      phone: string
                       title: string
                       referenceId: string
         description: 'When POSTing contact data, the `name` and `company` fields are required for every contact in the array. The other fields are optional.'
@@ -384,59 +381,68 @@ paths:
             type: string
           in: query
           name: company
-          description: Filter on company field
+          description: Company name to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: title
-          description: Filter on title field
-        - schema:
-            type: string
-          in: query
-          name: domain
-          description: Filter on domain field
+          description: Job title to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: name
-          description: Filter on name field
+          description: Contact name to filter on. Partial match.
         - schema:
             type: string
-            enum:
-              - +name
-              - '-name'
+            example: '-name'
           in: query
           name: sortBy
-          description: Sort the results by the specified field
+          description: Which field to sort on. Use the pattern +name to sort ascending and -name to sort descending.
         - schema:
-            type: string
+            type: integer
           in: query
-          name: referenceId
-          description: Filter on reference Id
+          name: limit
+          description: Number of records to return. Use to improve performance for large ledgers. Used in conjunction with offset.
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: Record number to start at when returning results. Used in conjunction with limit.
         - schema:
             type: string
           in: query
           name: fromDate
+          description: Only return contacts that Live Data has updated since the provided date.
         - schema:
             type: string
           in: query
           name: endDate
+          description: Only provide contacts that Live Data has updated prior to the provided date.
+        - schema:
+            type: boolean
+          in: query
+          name: isVerified
+          description: Filter results on whether or not the contacts have been verified by Live Data.
         - schema:
             type: string
           in: query
-          name: isVerified
+          name: referenceId
+          description: 'Reference ID to filter on. '
         - schema:
             type: string
           in: query
           name: importCompany
+          description: Imported company name to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: importTitle
+          description: Imported job title to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: linkedin
+          description: LinkedIn value to filter on. Partial match.
       description: |-
         Gets a list of contacts for the ledger. Any of the contact attributes listed in the querystring parameters can be used as filters (filters operate as partial matches). 
         Use the /contacts endpoint to return the results as JSON.
@@ -506,15 +512,24 @@ paths:
                 example-1:
                   value:
                     imports:
-                      - guid: string
+                      - id: string
                         fileName: string
                         contactsNum: 0
-                        importedBy: string
+                        importedById: string
                         status: in_progress
-                        iimportStartedAt: string
-                        importFinishedAt: string
-                        errorsCsvHref: string
                         type: ledger#import
+                        importedByUser:
+                          email: string
+                          name: string
+                          createdAt: string
+                          type: identity#user
+                        countDuplicates: 0
+                        countFailures: 0
+                        href: string
+                        importType: fileUpload
+                        importFinishedAt: string
+                        importStartedAt: string
+                        originalRows: 0
       operationId: get-import-jobs
       description: |-
         Get a list of all contact import jobs for this ledger.
@@ -529,26 +544,32 @@ paths:
               - complete
           in: query
           name: status
+          description: Status to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: fileName
+          description: File name to filter on. Partial match.
         - schema:
             type: string
           in: query
           name: sortBy
+          description: Which field to sort on. Use the pattern +fileName to sort ascending and -fileName to sort descending.
         - schema:
             type: integer
           in: query
           name: limit
+          description: Number of records to return. Use to improve performance for large ledgers. Used in conjunction with offset.
         - schema:
             type: integer
           in: query
           name: offset
+          description: Record number to start at when returning results. Used in conjunction with limit.
         - schema:
             type: string
           in: query
           name: importType
+          description: Import type to filter on. Partial match.
   '/orgs/{orgId}/ledgers/{ledgerId}/contacts/imports/{importId}':
     parameters:
       - schema:
@@ -581,15 +602,24 @@ paths:
               examples:
                 example-1:
                   value:
-                    guid: string
+                    id: string
                     fileName: string
                     contactsNum: 0
-                    importedBy: string
+                    importedById: string
                     status: in_progress
-                    iimportStartedAt: string
-                    importFinishedAt: string
-                    errorsCsvHref: string
                     type: ledger#import
+                    importedByUser:
+                      email: string
+                      name: string
+                      createdAt: string
+                      type: identity#user
+                    countDuplicates: 0
+                    countFailures: 0
+                    href: string
+                    importType: fileUpload
+                    importFinishedAt: string
+                    importStartedAt: string
+                    originalRows: 0
       description: |-
         Get details for a specific import job.
         Role(s) permitted: viewer, editor, admin
@@ -728,6 +758,10 @@ paths:
                 properties:
                   countRowsDeleted:
                     type: number
+              examples:
+                example-1:
+                  value:
+                    countRowsDeleted: 0
         '422':
           description: Unprocessable Entity (WebDAV)
       operationId: bulk-delete-ledger-contacts
@@ -797,24 +831,21 @@ components:
     Contact:
       title: contact
       type: object
-      description: The contact model when contact data is returned from a ledger
+      description: Represents a contact on a ledger.
       properties:
         id:
           type: string
+          description: The unique LD contact ID for this contact.
         name:
           type: string
         company:
           type: string
+          description: The current company that employs this contact.
         linkedin:
-          type: string
-        email:
-          type: string
-        phone:
           type: string
         title:
           type: string
-        importedFrom:
-          $ref: '#/components/schemas/Imports'
+          description: The current job title of this contact.
         createdAt:
           type: string
           description: Date at which this contact was added to this ledger
@@ -826,18 +857,29 @@ components:
           default: ledger#contact
         importCompany:
           type: string
+          description: The name of the company that this contact was imported with.
         importTitle:
           type: string
+          description: The job title this contact was imported with.
         referenceId:
           type: string
+          description: The customer-provided reference ID for this contact.
+        isVerified:
+          type: boolean
+          description: Indicates whether Live Data has been able to verify/identify this contact on the open web.
+        ledgerImportId:
+          type: string
+          description: The ID of the batch import this contact was imported from.
       required:
         - id
         - name
         - createdAt
+      x-examples: {}
     ContactBody:
       title: contactBody
       type: object
       description: The contact model used when creating a new contact in a new ledger
+      x-examples: {}
       properties:
         name:
           type: string
@@ -845,47 +887,31 @@ components:
           type: string
         linkedin:
           type: string
-        email:
-          type: string
-        phone:
-          type: string
         title:
           type: string
         referenceId:
           type: string
-      x-examples:
-        example-1:
-          name: string
-          company: string
-          linkedin: string
-          email: string
-          phone: string
-          title: string
-          referenceId: string
     Imports:
       title: imports
       type: object
       properties:
         id:
           type: string
+          description: Unique Live Data ID for this import.
         fileName:
           type: string
         contactsNum:
           type: integer
-        importedBy:
+          description: The number of contacts that were submitted in this import.
+        importedById:
           type: string
+          description: User ID that created this import.
         status:
           type: string
           enum:
             - in_progress
             - complete
           readOnly: true
-        startedAt:
-          type: string
-        finishedAt:
-          type: string
-        errorsCsvHref:
-          type: string
         type:
           type: string
           default: ledger#import
@@ -900,6 +926,31 @@ components:
               type: string
             type:
               type: string
+              default: identity#user
+        countDuplicates:
+          type: integer
+          description: Count of records in this import that were identified as duplicates (already on the ledger).
+        countFailures:
+          type: integer
+          description: Count of records in this import that failed to import to the ledger.
+        href:
+          type: string
+          description: Full href of this resource
+        importType:
+          type: string
+          description: 'The type of import. '
+          enum:
+            - fileUpload
+            - manualInput
+            - apiImport
+        importFinishedAt:
+          type: string
+        importStartedAt:
+          type: string
+        originalRows:
+          type: integer
+          description: 'For file uploads via Flatfile, the number of rows that were in the original file.'
+      description: ''
     Ledger:
       title: ledger
       type: object
@@ -928,7 +979,6 @@ components:
       type: http
       scheme: bearer
 tags:
-  - name: Administrative
   - name: Contact Imports
   - name: Ledger Contacts
   - name: Ledgers
