@@ -35,17 +35,10 @@ jobs:
         run: |
           npm install -g @redocly/openapi-cli@latest
           openapi bundle postman/schemas/schema.yaml -o Ledger/LDT-Ledger.yaml
-        
-#       - uses: hilary/openapi-cli-bundle-action@v0.0.2
-#         with:
-#           # Path to the BASE OpenAPI specification file
-#           base-spec: postman/schemas/schema.yaml
-#           # Path to the output bundled OpenAPI specification file
-#           bundled-spec: Ledger/LDT-Ledger.yaml
           
       - uses: jakejarvis/s3-sync-action@master
         with:
-          args: --follow-symlinks --delete
+          args: --follow-symlinks
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
