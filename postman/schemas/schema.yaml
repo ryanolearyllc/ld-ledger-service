@@ -348,7 +348,7 @@ paths:
                       referenceId: string
         description: 'When POSTing contact data, the `name` and `company` fields are required for every contact in the array. The other fields are optional.'
       description: |-
-        Asynchronously import contacts via json body. The response from this call is an ImportID which can be checked to determined the status of the import.
+        Asynchronously import contacts via json body. The response from this call is an ImportID which can be checked to determined the status of the import. For performance reasons, limit the number submitted in this call to 2,500 contacts and the request body size to 1MB.
         Role(s) permitted: editor, admin
       tags:
         - Ledger Contacts
