@@ -42,20 +42,23 @@ jobs:
       - name: Install deps
         run: npm install
         
-      - name: Remove out-of-date files and git
+      - name: Remove out-of-date files
         run: |
           rm -rf node_modules/@types/node/assert.d.ts
-          #rm -rf .git
         
       - name: Git config
         run: |
           git config --global user.name "LD Devops Automation"
           git config --global user.email "support@livedatatechnologies.com"
           
+      - name: Set NPM package version
+        run: |
+          echo "npm_pkg_ver=`npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'`" >> $GITHUB_ENV
+          
       - name: Version bump
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm version --force --no-commit-hooks `npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'` 
+          npm version --force --no-commit-hooks ${{npm_pkg_ver}} 
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
@@ -67,7 +70,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
-#       - name: Push version tag
-#         run: git push
+      - name: Push version tag
+        run: |
+          git tag -a ${{npm_pkg_ver}} -m "NPM package version ${{npm_pkg_ver}}
+          git push origin ${{npm_pkg_ver}}
           
 
