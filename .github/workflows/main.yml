@@ -51,28 +51,28 @@ jobs:
           git config --global user.name "LD Devops Automation"
           git config --global user.email "support@livedatatechnologies.com"
           
-      - name: Set NPM package version
+      - name: Get next NPM package version
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}        
           echo "npm_pkg_ver=`npm view @roleary-ldt/ledger-service-api dist-tags.latest | awk '{split($0,a,".");print a[1]"."a[2]"."a[3]+1}'`" >> $GITHUB_ENV
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           
-      - name: Version bump
+      - name: Bump NPM package version
         run: |
           npm version --force --no-commit-hooks ${{env.npm_pkg_ver}} 
 
       - name: Build NPM
         run: npm run build
 
-#       - name: Publish NPM package
-#         run: npm publish dist
-#         env:
-#           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish NPM package
+        run: npm publish dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
-#       - name: Push version tag
-#         run: |
-#           git tag -a ${{env.npm_pkg_ver}} -m "NPM package version ${{env.npm_pkg_ver}}
-#           git push origin ${{env.npm_pkg_ver}}
+      - name: Push version tag
+        run: |
+          git tag -a ${{env.npm_pkg_ver}} -m "NPM package version ${{env.npm_pkg_ver}}
+          git push origin ${{env.npm_pkg_ver}}
           
 
