@@ -72,7 +72,7 @@ jobs:
           
       - name: Push version tag
         run: |
-          git tag -a ${{env.npm_pkg_ver}} -m "NPM package version ${{env.npm_pkg_ver}}
+          git tag -a ${{env.npm_pkg_ver}} -m "NPM package version ${{env.npm_pkg_ver}}"
           git push origin ${{env.npm_pkg_ver}}
           
 
