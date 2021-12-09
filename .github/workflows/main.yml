@@ -58,7 +58,7 @@ jobs:
       - name: Version bump
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm version --force --no-commit-hooks ${{npm_pkg_ver}} 
+          npm version --force --no-commit-hooks ${{env.npm_pkg_ver}} 
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
@@ -72,7 +72,7 @@ jobs:
           
       - name: Push version tag
         run: |
-          git tag -a ${{npm_pkg_ver}} -m "NPM package version ${{npm_pkg_ver}}
-          git push origin ${{npm_pkg_ver}}
+          git tag -a ${{env.npm_pkg_ver}} -m "NPM package version ${{env.npm_pkg_ver}}
+          git push origin ${{env.npm_pkg_ver}}
           
 
