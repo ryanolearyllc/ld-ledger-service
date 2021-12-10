@@ -1017,8 +1017,6 @@ components:
           type: string
         personId:
           type: string
-        dateUpdated:
-          type: string
         referenceId:
           type: string
         personLipid:
