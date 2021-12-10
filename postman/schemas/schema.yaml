@@ -826,18 +826,8 @@ paths:
       description: Sets the maintenance mode of the ledger service
       tags:
         - Administrative
-  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/{contactId}/cleanHistory':
+  '/contacts/{contactId}/cleanHistory':
     parameters:
-      - schema:
-          type: string
-        name: orgId
-        in: path
-        required: true
-      - schema:
-          type: string
-        name: ledgerId
-        in: path
-        required: true
       - schema:
           type: string
         name: contactId
