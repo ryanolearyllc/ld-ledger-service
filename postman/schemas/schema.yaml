@@ -826,6 +826,39 @@ paths:
       description: Sets the maintenance mode of the ledger service
       tags:
         - Administrative
+  '/orgs/{orgId}/ledgers/{ledgerId}/contacts/{contactId}/cleanHistory':
+    parameters:
+      - schema:
+          type: string
+        name: orgId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: ledgerId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: contactId
+        in: path
+        required: true
+    get:
+      summary: Get Clean history for a given contact
+      tags:
+        - Ledger Contacts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CleanResult'
+      operationId: get-contact-clean-history
+      x-internal: true
+      description: 'Get Clean history for a given person, by contact ID'
 components:
   schemas:
     Contact:
@@ -974,6 +1007,34 @@ components:
       required:
         - id
         - name
+    CleanResult:
+      title: CleanResult
+      type: object
+      x-internal: true
+      description: ''
+      properties:
+        cleanJobItemId:
+          type: string
+        personId:
+          type: string
+        referenceId:
+          type: string
+        personLipid:
+          type: string
+        personName:
+          type: string
+        personTitle:
+          type: string
+        orgName:
+          type: string
+        cleanStatus:
+          type: string
+        validInput:
+          type: string
+        processedWith:
+          type: string
+        dateRecorded:
+          type: string
   securitySchemes:
     Access Token:
       type: http
