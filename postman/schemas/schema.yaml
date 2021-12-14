@@ -872,6 +872,64 @@ paths:
       operationId: get-contact-clean-history
       x-internal: true
       description: 'Get Clean history for a given person, by contact ID'
+  '/people/{personId}':
+    parameters:
+      - schema:
+          type: string
+        name: personId
+        in: path
+        required: true
+    get:
+      summary: Get Person details
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  linkedin:
+                    type: string
+                  name:
+                    type: string
+                  company:
+                    type: string
+                  title:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  location:
+                    type: string
+                  isActive:
+                    type: boolean
+                  dateInserted:
+                    type: string
+                    format: date-time
+                  dateChanged:
+                    type: string
+                    format: date-time
+                  dateUpdated:
+                    type: string
+                    format: date-time
+              examples:
+                example-2:
+                  value:
+                    linkedIn: string
+                    name: string
+                    company: string
+                    title: string
+                    email: user@example.com
+                    location: string
+                    isActive: true
+                    dateInserted: '2019-08-24T14:15:22Z'
+                    dateChanged: '2019-08-24T14:15:22Z'
+                    dateUpdated: '2019-08-24T14:15:22Z'
+      operationId: getPersonDetails
+      description: Get details for the given person
+      x-internal: true
 components:
   schemas:
     Contact:
