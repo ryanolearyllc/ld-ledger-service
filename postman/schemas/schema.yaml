@@ -890,7 +890,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  linkedIn:
+                  linkedin:
                     type: string
                   name:
                     type: string
