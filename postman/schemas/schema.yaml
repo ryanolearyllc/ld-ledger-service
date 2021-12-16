@@ -914,6 +914,19 @@ paths:
                   dateUpdated:
                     type: string
                     format: date-time
+                  ledgers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orgId:
+                          type: string
+                        orgName:
+                          type: string
+                        ledgerId:
+                          type: string
+                        ledgerName:
+                          type: string
               examples:
                 example-2:
                   value:
